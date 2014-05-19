@@ -26,6 +26,14 @@ void setup()
   while (!Serial) {
     ; // wait for serial port to connect. Needed for Leonardo only
   }
+  Serial.print("timestamp");
+  Serial.print(",");
+  Serial.print("temperature");
+  Serial.print(",");
+  Serial.print("humidity");
+  Serial.print(",");
+  Serial.print("dew_point");
+  Serial.println();
 }
 
 void loop()
@@ -34,13 +42,12 @@ void loop()
   float temp, humi;
   if((err=dht11.read(humi, temp))==0)
   {
-    Serial.print("timestamp: ");
     Serial.print(timestamp);
-    Serial.print(" temperature: ");
+    Serial.print(",");
     Serial.print(temp);
-    Serial.print(" humidity: ");
+    Serial.print(",");
     Serial.print(humi);
-    Serial.print(" dew point: ");
+    Serial.print(",");
     Serial.print(dewPointFast(temp, humi));
     Serial.println();
   }
@@ -54,5 +61,4 @@ void loop()
   timestamp = timestamp + interval;
   delay(interval*1000); //delay for reread
 }
-
 
