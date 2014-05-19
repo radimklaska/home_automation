@@ -5,7 +5,7 @@ DHT11 dht11(pin);
 // time interval in seconds
 int interval = 1;
 // CSV delimiter
-char delimiter = ';';
+String delimiter = "\t";
 
 
 // delta max = 0.6544 wrt dewPoint()
