@@ -7,6 +7,9 @@ DHT11 dht11(pin);
 unsigned long timestamp = 0;
 // time interval in seconds
 int interval = 1;
+// CSV delimiter
+char delimiter = ';';
+
 
 // delta max = 0.6544 wrt dewPoint()
 // 6.9 x faster than dewPoint()
@@ -27,11 +30,11 @@ void setup()
     ; // wait for serial port to connect. Needed for Leonardo only
   }
   Serial.print("timestamp");
-  Serial.print(",");
+  Serial.print(delimiter);
   Serial.print("temperature");
-  Serial.print(",");
+  Serial.print(delimiter);
   Serial.print("humidity");
-  Serial.print(",");
+  Serial.print(delimiter);
   Serial.print("dew_point");
   Serial.println();
 }
@@ -43,11 +46,11 @@ void loop()
   if((err=dht11.read(humi, temp))==0)
   {
     Serial.print(timestamp);
-    Serial.print(",");
+    Serial.print(delimiter);
     Serial.print(temp);
-    Serial.print(",");
+    Serial.print(delimiter);
     Serial.print(humi);
-    Serial.print(",");
+    Serial.print(delimiter);
     Serial.print(dewPointFast(temp, humi));
     Serial.println();
   }
