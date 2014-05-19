@@ -2,6 +2,12 @@
 int pin=2;
 DHT11 dht11(pin);
 
+// timestamp - needs to be corrected after data export
+// (I'm currently logging in console...)
+unsigned long timestamp = 0;
+// time interval in seconds
+int interval = 1;
+
 // delta max = 0.6544 wrt dewPoint()
 // 6.9 x faster than dewPoint()
 // reference: http://en.wikipedia.org/wiki/Dew_point
@@ -28,7 +34,9 @@ void loop()
   float temp, humi;
   if((err=dht11.read(humi, temp))==0)
   {
-    Serial.print("temperature: ");
+    Serial.print("timestamp: ");
+    Serial.print(timestamp);
+    Serial.print(" temperature: ");
     Serial.print(temp);
     Serial.print(" humidity: ");
     Serial.print(humi);
@@ -43,7 +51,8 @@ void loop()
     Serial.print(err);
     Serial.println();    
   }
-  delay(5000); //delay for reread
+  timestamp = timestamp + interval;
+  delay(interval*1000); //delay for reread
 }
 
 
