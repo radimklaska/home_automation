@@ -3,7 +3,7 @@ int pin=2;
 DHT11 dht11(pin);
 
 // time interval in seconds
-int interval = 1;
+long interval = 60;
 // CSV delimiter
 String delimiter = "\t";
 
