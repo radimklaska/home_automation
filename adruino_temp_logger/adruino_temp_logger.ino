@@ -2,7 +2,7 @@
 int pin=2;
 DHT11 dht11(pin);
 
-// time interval in seconds
+// Time interval in seconds
 long interval = 60;
 // CSV delimiter
 String delimiter = "\t";
@@ -52,7 +52,7 @@ void loop()
     Serial.println();
     Serial.print("Error No :");
     Serial.print(err);
-    Serial.println();    
+    Serial.println();
   }
   delay(interval*1000); //delay for reread
 }
