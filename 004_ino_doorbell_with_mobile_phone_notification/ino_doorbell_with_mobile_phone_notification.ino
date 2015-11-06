@@ -61,6 +61,9 @@ void setup() {
 
 void loop()
 {
+      // Maintain DHCP lease
+      Ethernet.maintain();
+
       ////
       // Listening for the photocellPin state
       ////
